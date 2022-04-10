@@ -1,2 +1,2 @@
-# mortality_prediction
-Multimodal approaches (RNN + embedding) predict mortality
+# Mortality Prediction
+Use multimodal approaches (RNN + embedding) to predict mortality
