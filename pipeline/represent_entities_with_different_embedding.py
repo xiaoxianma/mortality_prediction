@@ -15,8 +15,8 @@ warnings.filterwarnings("ignore")
 data_path = "../data/intermediate/"
 
 new_notes = pd.read_pickle(f"{data_path}ner_df.p")  # med7
-w2vec = Word2Vec.load("embeddings/word2vec.model")
-fasttext = FastText.load("embeddings/fasttext.model")
+w2vec = Word2Vec.load("../data/embeddings/word2vec.model")
+fasttext = FastText.load("../data/embeddings/fasttext.model")
 
 
 null_index_list = []
