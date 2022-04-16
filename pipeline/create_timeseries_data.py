@@ -47,16 +47,16 @@ print(sum(Ys_dev.los_7.values) * 1.0 / len(Ys_dev.los_7.values))
 print(sum(Ys_test.los_7.values) * 1.0 / len(Ys_test.los_7.values))
 
 new_word2vec_dict = pd.read_pickle(
-    f"{intermediate_data_path}/new_ner_word2vec_dict.pkl"
+    f"{intermediate_data_path}/new_ner_word2vec_limited_dict.pkl"
 )
 new_keys = set(new_word2vec_dict.keys())
 new_train_ids = sorted(all_train_ids.intersection(new_keys))
 new_dev_ids = sorted(all_dev_ids.intersection(new_keys))
 new_test_ids = sorted(all_test_ids.intersection(new_keys))
 
-new_train_ids = pd.read_pickle(f"{intermediate_data_path}/new_train_ids.pkl")
-new_dev_ids = pd.read_pickle(f"{intermediate_data_path}/new_dev_ids.pkl")
-new_test_ids = pd.read_pickle(f"{intermediate_data_path}/new_test_ids.pkl")
+pd.to_pickle(new_train_ids, f"{intermediate_data_path}/new_train_ids.pkl")
+pd.to_pickle(new_dev_ids, f"{intermediate_data_path}/new_dev_ids.pkl")
+pd.to_pickle(new_test_ids, f"{intermediate_data_path}/new_test_ids.pkl")
 
 
 data_ids = [(new_train_ids, new_dev_ids, new_test_ids)]
@@ -77,9 +77,9 @@ for i, (tr, de, te) in zip(data_names, data_ids):
     sub_test = lvl2_test.loc[te]
     sub_test = sub_test.loc[:, pd.IndexSlice[:, "mean"]]
 
-    sub_train = sub_train.as_matrix()
-    sub_dev = sub_dev.as_matrix()
-    sub_test = sub_test.as_matrix()
+    sub_train = sub_train.to_numpy()
+    sub_dev = sub_dev.to_numpy()
+    sub_test = sub_test.to_numpy()
 
     # reshape the data for timeseries prediction
     x_train_lstm = sub_train.reshape(int(sub_train.shape[0] / 24), 24, 104)

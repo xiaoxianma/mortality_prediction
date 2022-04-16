@@ -2,8 +2,9 @@ import pandas as pd
 import os
 import numpy as np
 from gensim.models import Word2Vec, FastText
-import glove
-from glove import Corpus
+
+# import glove
+# from glove import Corpus
 
 import collections
 import gc
@@ -16,7 +17,7 @@ data_path = "../data/intermediate/"
 
 new_notes = pd.read_pickle(f"{data_path}ner_df.p")  # med7
 w2vec = Word2Vec.load("../data/embeddings/word2vec.model")
-fasttext = FastText.load("../data/embeddings/fasttext.model")
+fasttext = FastText.load("../data/embeddings/FastText/fasttext.model")
 
 
 null_index_list = []
@@ -71,7 +72,7 @@ for data, names in zip(data_types, data_names):
         patient_temp = []
         for i in v:
             try:
-                patient_temp.append(w2vec[i[0]])
+                patient_temp.append(w2vec.wv[i[0]])
             except:
                 avg = []
                 num = 0
@@ -80,7 +81,7 @@ for data, names in zip(data_types, data_names):
                 if len(i[0].split(" ")) > 1:
                     for each_word in i[0].split(" "):
                         try:
-                            temp = w2vec[each_word]
+                            temp = w2vec.wv[each_word]
                             avg.append(temp)
                             num += 1
                         except:
@@ -88,7 +89,7 @@ for data, names in zip(data_types, data_names):
                     if num == 0:
                         continue
                     avg = np.asarray(avg)
-                    t = np.asarray(map(mean, zip(*avg)))
+                    t = np.asarray(list(map(mean, list(zip(*avg)))))
                     patient_temp.append(t)
         if len(patient_temp) == 0:
             continue
@@ -105,7 +106,7 @@ for data, names in zip(data_types, data_names):
 
         for i in v:
             try:
-                patient_temp.append(fasttext[i[0]])
+                patient_temp.append(fasttext.wv[i[0]])
             except:
                 pass
         if len(patient_temp) == 0:
@@ -123,7 +124,7 @@ for data, names in zip(data_types, data_names):
         for i in v:
             w2vec_temp = []
             try:
-                w2vec_temp = w2vec[i[0]]
+                w2vec_temp = w2vec.wv[i[0]]
             except:
                 avg = []
                 num = 0
@@ -132,7 +133,7 @@ for data, names in zip(data_types, data_names):
                 if len(i[0].split(" ")) > 1:
                     for each_word in i[0].split(" "):
                         try:
-                            temp = w2vec[each_word]
+                            temp = w2vec.wv[each_word]
                             avg.append(temp)
                             num += 1
                         except:
@@ -141,14 +142,17 @@ for data, names in zip(data_types, data_names):
                         w2vec_temp = [0] * 100
                     else:
                         avg = np.asarray(avg)
-                        w2vec_temp = np.asarray(map(mean, zip(*avg)))
+                        w2vec_temp = np.asarray(list(map(mean, list(zip(*avg)))))
                 else:
                     w2vec_temp = [0] * 100
 
-            fasttemp = fasttext[i[0]]
-
-            appended = np.append(fasttemp, w2vec_temp, 0)
-            patient_temp.append(appended)
+            try:
+                fasttemp = fasttext.wv[i[0]]
+                appended = np.append(fasttemp, w2vec_temp, 0)
+                assert appended.shape == (200,)
+                patient_temp.append(appended)
+            except Exception as e:
+                pass
         if len(patient_temp) == 0:
             continue
         new_concatvec[k] = patient_temp
@@ -159,10 +163,15 @@ for data, names in zip(data_types, data_names):
     pd.to_pickle(new_concatvec, data_path + names + "_combined_dict.pkl")
 
 
-diff = set(new_fasttextvec.keys()).difference(set(new_word2vec))
+new_fasttextvec_keys = set(new_fasttextvec.keys())
+new_word2vec_keys = set(new_word2vec.keys())
+diff = (new_fasttextvec_keys - new_word2vec_keys) | (
+    new_word2vec_keys - new_fasttextvec_keys
+)
 for i in diff:
-    del new_fasttextvec[i]
-    del new_concatvec[i]
+    new_fasttextvec.pop(i, None)
+    new_word2vec.pop(i, None)
+    new_concatvec.pop(i, None)
 print(len(new_word2vec), len(new_fasttextvec), len(new_concatvec))
 
 
