@@ -52,7 +52,7 @@ All models results will be generated under its model directory as a `hdf5` file 
 #### Multimodal with medical entities using LSTM (additional experiments)
 | Task        | Embedding | AUROC | AUPRC | F1    |
 |-------------|-----------|-------|-------|-------|
-| In-hospital | Word2Vec  | 88.60 | 57.86 | 44.31 |
+| In-hospital | Word2Vec  | 88.60 | 58.86 | 47.31 |
 |             | FastText  | 87.51 | 56.34 | 48.75 |
 |             | Concat    | 88.15 | 58.31 | 51.51 |
 | In-ICU      | Word2Vec  | 88.22 | 58.69 | 49.34 |
