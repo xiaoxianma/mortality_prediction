@@ -2,7 +2,7 @@
 This repo implements all three methodologies that the paper ["Improving Clinical Outcome Predictions Using Convolution over Medical Entities with Multimodal Learning"](https://arxiv.org/abs/2011.12349) proposed. The three models are basic RNN model, multimodal with average medical entities, and multimodal with Doc2Vec medical entities.
 
 # Citation
-["Improving Clinical Outcome Predictions Using Convolution over Medical Entities with Multimodal Learning"](https://arxiv.org/abs/2011.12349), 	arXiv:2011.12349
+[Improving Clinical Outcome Predictions Using Convolution over Medical Entities with Multimodal Learning](https://arxiv.org/abs/2011.12349), 	arXiv:2011.12349
 
 # Runbook
 ### Data Download Instruction
