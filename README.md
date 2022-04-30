@@ -24,7 +24,8 @@ Go to `models` folder
 2. Run `multimodal_baseline.py` for RNN model + averaged medical entities
 3. Run `proposed_model.py` for multimodal with Doc2Vec medical entities
 ### Results
-All models' results will be generated under its model directory as a `hdf5` file after running models.
+All models results will be generated under its model directory as a `hdf5` file after running models.  
+List results table below.
 #### Time series baseline model result
 | Task        | AUROC | AUPRC | F1    |
 |-------------|-------|-------|-------|
