@@ -33,7 +33,7 @@ All models results will be generated under its model directory as a `hdf5` file 
 | LOS > 3     | 68.81 | 63.40 | 53.26 |
 | LOS > 7     | 72.83 | 19.35 | 4.24  |
 
-#### Multimodal with Doc2Vec medical entities using GRU
+#### Multimodal with medical entities using GRU
 | Task        | Embedding | AUROC | AUPRC | F1    |
 |-------------|-----------|-------|-------|-------|
 | In-hospital | Word2Vec  | 87.98 | 58.16 | 46.96 |
@@ -49,4 +49,18 @@ All models results will be generated under its model directory as a `hdf5` file 
 |             | FastText  | 72.41 | 22.92 | 2.23  |
 |             | Concat    | 72.65 | 20.90 | 4.36  |
 
-#### Multimodal with Doc2Vec medical entities using LSTM
+#### Multimodal with medical entities using LSTM
+| Task        | Embedding | AUROC | AUPRC | F1    |
+|-------------|-----------|-------|-------|-------|
+| In-hospital | Word2Vec  | 88.60 | 57.86 | 44.31 |
+|             | FastText  | 87.51 | 56.34 | 48.75 |
+|             | Concat    | 88.15 | 58.31 | 51.51 |
+| In-ICU      | Word2Vec  | 88.22 | 58.69 | 49.34 |
+|             | FastText  | 88.76 | 53.53 | 48.67 |
+|             | Concat    | 88.39 | 52.58 | 44.30 |
+| LOS > 3     | Word2Vec  | 69.86 | 65.27 | 54.49 |
+|             | FastText  | 69.28 | 63.82 | 55.98 |
+|             | Concat    | 69.57 | 63.92 | 56.14 |
+| LOS > 7     | Word2Vec  | 72.69 | 21.35 | 0.016 |
+|             | FastText  | 71.74 | 20.86 | 0.027 |
+|             | Concat    | 73.27 | 21.60 | 0.028 |
