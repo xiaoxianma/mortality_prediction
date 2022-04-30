@@ -18,7 +18,7 @@ Go to `pipeline` folder
 4. Run `apply_med7_on_clinical_notes.py`
 5. Run `represent_entities_with_different_embedding.py`
 6. Run `create_timeseries_data.py`
-### Model Training & Running
+### Model Training & Evaluation
 Go to `models` folder
 1. Run `time_series_baseline.py` for basic RNN model
 2. Run `multimodal_baseline.py` for RNN model + averaged medical entities
