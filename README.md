@@ -1,13 +1,16 @@
 # Mortality Prediction
 This repo implements all three methodologies that the paper ["Improving Clinical Outcome Predictions Using Convolution over Medical Entities with Multimodal Learning"](https://arxiv.org/abs/2011.12349) proposed. The three models are basic RNN model, multimodal with average medical entities, and multimodal with Doc2Vec medical entities.
 
-# Steps to run
-### Data Preparation
+# Citation
+["Improving Clinical Outcome Predictions Using Convolution over Medical Entities with Multimodal Learning"](https://arxiv.org/abs/2011.12349), 	arXiv:2011.12349
+
+# Runbook
+### Data Download Instruction
 Follow `data/README.md` file
 1. Download MIMIC-III data
 2. Install med7 library
 3. Download pre-trained embeddings
-### Data Cleaning
+### Data Preparation/Cleaning
 Go to `pipeline` folder
 1. Run `extract_timeseries_features.py`
 2. Run `select_sub_clinical_notes.py`
