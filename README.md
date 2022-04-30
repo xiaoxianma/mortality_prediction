@@ -25,7 +25,7 @@ Go to `models` folder
 3. Run `proposed_model.py` for multimodal with Doc2Vec medical entities
 ### Results
 All models results will be generated under its model directory as a `hdf5` file after running models. List result tables below.
-#### Time series baseline model result
+#### Time series baseline model result (reproduced original paper baseline model)
 | Task        | AUROC | AUPRC | F1    |
 |-------------|-------|-------|-------|
 | In-hospital | 86.95 | 54.89 | 44.51 |
@@ -33,7 +33,7 @@ All models results will be generated under its model directory as a `hdf5` file 
 | LOS > 3     | 68.81 | 63.40 | 53.26 |
 | LOS > 7     | 72.83 | 19.35 | 4.24  |
 
-#### Multimodal with medical entities using GRU
+#### Multimodal with medical entities using GRU (reproduced original paper multimodal model)
 | Task        | Embedding | AUROC | AUPRC | F1    |
 |-------------|-----------|-------|-------|-------|
 | In-hospital | Word2Vec  | 87.98 | 58.16 | 46.96 |
@@ -49,7 +49,7 @@ All models results will be generated under its model directory as a `hdf5` file 
 |             | FastText  | 72.41 | 22.92 | 2.23  |
 |             | Concat    | 72.65 | 20.90 | 4.36  |
 
-#### Multimodal with medical entities using LSTM
+#### Multimodal with medical entities using LSTM (additional experiments)
 | Task        | Embedding | AUROC | AUPRC | F1    |
 |-------------|-----------|-------|-------|-------|
 | In-hospital | Word2Vec  | 88.60 | 57.86 | 44.31 |
