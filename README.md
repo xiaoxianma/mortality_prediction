@@ -25,3 +25,14 @@ Go to `models` folder
 3. Run `proposed_model.py` for multimodal with Doc2Vec medical entities
 ### Results
 All models' results will be saved under its model directory as a `hdf5` file.
+#### Time series baseline model result
+	Task	AUROC	AUPRC	F1
+Original Paper	In-hospital	85.04	52.15	42.29
+	In-ICU	86.32	46.51	36.30
+	LOS > 3	67.40	60.17	53.36
+	LOS > 7	70.54	16.35	2.33
+Our experiment	In-hospital	86.95	54.89	44.51
+	In-ICU	88.44	50.66	41.50
+	LOS > 3	68.81	63.40	53.26
+	LOS > 7	72.83	19.35	4.24
+![image](https://user-images.githubusercontent.com/3086064/166121227-4117c778-a82f-4d7d-a1ae-2f49ff4c9156.png)
