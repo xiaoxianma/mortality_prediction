@@ -33,7 +33,7 @@ All models results will be generated under its model directory as a `hdf5` file 
 | LOS > 3     | 68.81 | 63.40 | 53.26 |
 | LOS > 7     | 72.83 | 19.35 | 4.24  |
 
-#### Multimodal with medical entities using GRU (reproduced original paper multimodal model)
+#### Multimodal with medical entities using GRU (multimodal)
 | Task        | Embedding | AUROC | AUPRC | F1    |
 |-------------|-----------|-------|-------|-------|
 | In-hospital | Word2Vec  | 87.98 | 58.16 | 46.96 |
